@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>What You Need to Do</title>
+  </head>
+  <body>
+    <p>Pending Tasks:</p>
+    {% for item in to_do_list %}
+    <ul>
+      <li>Task: {{ item[0] }}</li>
+      <li>Email address: {{ item[1] }}</li>
+      <li>Priority level: {{ item[2] }}</li>
+    </ul>
+    {% endfor %}
+    <br/><br/>Add a New Item: <br/><br/>
+    <form action="/submit" method="post">
+        The task: <input type="text" name="task"></input><br/>
+        Email address: <input type="text" name="email"></input><br/>
+        Priority level: 
+        <select name="priority">
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+        </select><br/><br/>
+        {{error}}<br/><br/>
+        <input type="submit" value="Add To Do Item">
+    </form>
+    <form action="/clear" method="post">
+        <input type="submit" value="Clear">
+    </form>
+  </body>
+</html>
